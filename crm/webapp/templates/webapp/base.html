@@ -8,6 +8,7 @@
   <title>{% block title %} ProjectX {% endblock title %}</title>
   <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/lux/bootstrap.min.css">
   <link href={% static "css/style.css" %} rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -29,6 +30,14 @@
     <br>
 
     <!-- notification messages -->
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <p id="message" class="alert alert-success float-center text-center message-text">
+      <i class="fa fa-check" aria-hidden="true"></i> &nbsp; {{ message }}
+    </p>
+    {% endif %}
+    {% endfor %}
+
     {% block content %}
 
     {% endblock content %}
